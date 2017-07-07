@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-only-warn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Downgrade errors to warnings",
   "keywords": [
     "eslint",
@@ -16,7 +16,7 @@
   "homepage": "https://github.com/bfanger/eslint-plugin-only-warn",
   "repository": {
     "type": "git",
-    "url": "https://github.com/npm/npm.git"
+    "url": "https://github.com/bfanger/eslint-plugin-only-warn.git"
   },
   "eslintConfig": {
     "extends": "vue",
