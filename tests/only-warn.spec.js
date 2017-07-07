@@ -1,16 +1,22 @@
-const eslint = require("eslint")
-require('../src/only-warn')
+const { linter } = require('eslint')
+const { disable, enable } = require('../src/only-warn') // apply patch
 
-const { linter } = eslint
+describe('eslint-plugin-only-warn', () => {
+  const config = {
+    rules: { semi: 2 } // error on missing `;`
+  }
+  const sourceCode = 'var foo'
+  it('should downgrade error(2) to warn(1)', () => {
+    const messages = linter.verify(sourceCode, config)
+    expect(messages[0].severity).toBe(1)
+  })
 
-
-describe('downgradeError plugin', () => {
-    it('should downgrade error(2) to warn(1)', () => {
-        const messages = linter.verify("var foo", {
-            rules: {
-                semi: 2 // error
-            }
-        }, { filename: "foo.js" });
-        expect(messages[0].severity).toBe(1)
-    })
+  it('can be temporarly disabled', () => {
+    disable()
+    const messages1 = linter.verify(sourceCode, config)
+    expect(messages1[0].severity).toBe(2)
+    enable()
+    const messages2 = linter.verify(sourceCode, config)
+    expect(messages2[0].severity).toBe(1)
+  })
 })

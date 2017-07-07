@@ -1,6 +1,8 @@
 # eslint-plugin-only-warn
 
-Downgrade errors to warnings 
+[![Build Status](https://travis-ci.org/bfanger/eslint-plugin-only-warn.svg?branch=master)](https://travis-ci.org/bfanger/eslint-plugin-only-warn)
+
+Downgrade errors to warnings
 
 ## Installation
 
