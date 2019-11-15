@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-only-warn",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Downgrade errors to warnings",
   "keywords": [
     "eslint",
@@ -18,18 +18,29 @@
     "type": "git",
     "url": "https://github.com/bfanger/eslint-plugin-only-warn.git"
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
   "eslintConfig": {
-    "extends": "vue",
+    "extends": "plugin:vue/recommended",
+    "plugins": [
+      "prettier"
+    ],
     "env": {
       "jest": true
+    },
+    "rules": {
+      "prettier/prettier": "error"
     }
   },
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^4",
-    "eslint-config-vue": "^2.0.2",
-    "eslint-plugin-vue": "^2.1.0",
-    "jest": "^20.0.3"
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^6.0.1",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1"
   },
   "engines": {
     "node": ">=6"

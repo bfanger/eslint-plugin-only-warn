@@ -1,7 +1,8 @@
-const { linter } = require('eslint')
+const eslint = require('eslint')
 const { disable, enable } = require('../src/only-warn') // apply patch
 
 describe('eslint-plugin-only-warn', () => {
+  const linter = new eslint.Linter()
   const config = {
     rules: { semi: 2 } // error on missing `;`
   }
