@@ -12,7 +12,7 @@ function getLinters() {
       try {
         const linter = require(eslintPath).Linter
         if (linter) {
-            linters.push(linter)
+          linters.push(linter)
         }
       } catch (error) {
         if (error.code !== "MODULE_NOT_FOUND") {
@@ -30,7 +30,7 @@ function getLinters() {
 function enable () {
   for (const [index, Linter] of getLinters().entries()) {
     const originalVerify = Linter.prototype._verifyWithoutProcessors;
-	  originalVerifies[index] = originalVerify;
+    originalVerifies[index] = originalVerify;
     Linter.prototype["_verifyWithoutProcessors"] = function() {
       const messages = originalVerify.apply(this, arguments)
       messages.forEach(message => {
@@ -47,7 +47,7 @@ function enable () {
  * Remove the patch
  */
 function disable () {
-	for (const [index, Linter] of getLinters().entries()) {
+  for (const [index, Linter] of getLinters().entries()) {
     Linter.prototype["_verifyWithoutProcessors"] = originalVerifies[index];
   }
 }
