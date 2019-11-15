@@ -1,6 +1,9 @@
 const path = require("path")
 
 const needle = `${path.sep}node_modules${path.sep}eslint${path.sep}`
+const linters = []
+const originalVerifies = []
+
 function getLinters() {
   if (linters.length == 0) {
     const eslintPaths_withParams = ["eslint"].concat(Object.keys(require.cache).filter(id => id.includes(needle)))
@@ -20,9 +23,6 @@ function getLinters() {
   }
   return linters
 }
-
-const linters = []
-const originalVerifies = []
 
 /**
  * Patch the verify method and downgrade the errors to warnings.
