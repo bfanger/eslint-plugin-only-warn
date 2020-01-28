@@ -7,9 +7,11 @@ describe('eslint-plugin-only-warn', () => {
     rules: { semi: 2 } // error on missing `;`
   }
   const sourceCode = 'var foo'
+
   it('should downgrade error(2) to warn(1)', () => {
     const messages = linter.verify(sourceCode, config)
     expect(messages[0].severity).toBe(1)
+    expect(messages[0].fatal).toBe(false)
   })
 
   it('can be temporarly disabled', () => {
