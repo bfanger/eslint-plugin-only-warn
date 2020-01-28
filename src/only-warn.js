@@ -15,6 +15,7 @@ function patch(LinterPrototype) {
     messages.forEach(message => {
       if (message.severity === 2) {
         message.severity = 1
+        message.fatal = false
       }
     })
     return messages
