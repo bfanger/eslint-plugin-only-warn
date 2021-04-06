@@ -31,3 +31,20 @@ Add `only-warn` to the plugins section of your `.eslintrc` configuration file. Y
     ]
 }
 ```
+
+### Settings
+
+You can provide a regex string to exclude some of the rule IDs (a full rule name or the plugin name). You can separate each pattern by `|`.
+
+```json
+{
+    "plugins": [
+        "only-warn"
+    ],
+    "settings": {
+        "only-warn": {
+            "exclude-pattern": "no-unused-vars|@typescript-eslint"
+        }
+    }
+}
+```
