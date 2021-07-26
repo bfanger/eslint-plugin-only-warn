@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-only-warn",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Downgrade errors to warnings",
   "keywords": [
     "eslint",
@@ -9,8 +9,10 @@
   ],
   "main": "src/only-warn.js",
   "scripts": {
-    "test": "eslint src tests && jest",
-    "test:watch": "jest --watch"
+    "test": "npm run lint && jest",
+    "lint": "prettier --check --loglevel=warn src tests && eslint src tests",
+    "format": "prettier --write --loglevel=warn src tests && eslint --fix src tests",
+    "jest:watch": "jest --watch"
   },
   "author": "Bob Fanger",
   "homepage": "https://github.com/bfanger/eslint-plugin-only-warn",
@@ -23,12 +25,14 @@
     "singleQuote": true
   },
   "eslintConfig": {
-    "extends": "plugin:vue/recommended",
+    "extends": "eslint:recommended",
     "plugins": [
       "prettier"
     ],
     "env": {
-      "jest": true
+      "jest": true,
+      "node": true,
+      "es6": true
     },
     "rules": {
       "prettier/prettier": "error"
@@ -36,11 +40,10 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^7.31.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-vue": "^6.0.1",
-    "jest": "^24.9.0",
-    "prettier": "^1.19.1"
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2"
   },
   "engines": {
     "node": ">=6"
