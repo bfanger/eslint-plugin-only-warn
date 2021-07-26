@@ -1,8 +1,6 @@
 # eslint-plugin-only-warn
 
-[![Build Status](https://travis-ci.org/bfanger/eslint-plugin-only-warn.svg?branch=master)](https://travis-ci.org/bfanger/eslint-plugin-only-warn)
-
-Downgrade errors to warnings
+![status](https://github.com/bfanger/eslint-plugin-only-warn/actions/workflows/lint-and-test.yml/badge.svg)
 
 ## Installation
 
