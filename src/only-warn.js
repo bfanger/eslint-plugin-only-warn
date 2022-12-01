@@ -13,7 +13,7 @@ function patch(LinterPrototype) {
   LinterPrototype.verify = function () {
     const messages = LinterPrototype[unpatchedVerify].apply(this, arguments)
     messages.forEach((message) => {
-      if (message.severity === 2) {
+      if (!message.fatal && message.severity === 2) {
         message.severity = 1
       }
     })
