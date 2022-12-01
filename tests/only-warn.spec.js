@@ -12,6 +12,13 @@ describe('eslint-plugin-only-warn', () => {
     expect(messages[0].severity).toBe(1)
   })
 
+  const sourceCodeFatalError = 'var foo = ( => {}'
+  it('should not downgrade fatal error(2)', () => {
+    const messages = linter.verify(sourceCodeFatalError, config)
+    expect(messages[0].fatal).toBe(true)
+    expect(messages[0].severity).toBe(2)
+  })
+
   it('can be temporarly disabled', () => {
     disable()
     const messages1 = linter.verify(sourceCode, config)
