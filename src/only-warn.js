@@ -12,11 +12,14 @@ function patch(LinterPrototype) {
   LinterPrototype[unpatchedVerify] = LinterPrototype.verify
   LinterPrototype.verify = function () {
     const messages = LinterPrototype[unpatchedVerify].apply(this, arguments)
+    const featureSlisedConfig = arguments?.[1]?.filter(a => a?.filePath?.includes('feature-sliced'))
     messages.forEach((message) => {
-      if (!message.fatal && message.severity === 2) {
+      const featureSlisedRelated = featureSlisedConfig.some(c => c?.rules && Object.keys(c.rules).some(rule => message.ruleId == rule))
+      if (!message.fatal && message.severity === 2 && featureSlisedRelated) {
         message.severity = 1
       }
     })
+
     return messages
   }
 }
