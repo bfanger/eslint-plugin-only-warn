@@ -2,39 +2,34 @@
 
 ![status](https://github.com/bfanger/eslint-plugin-only-warn/actions/workflows/lint-and-test.yml/badge.svg)
 
+Downgrade [ESLint](http://eslint.org) errors to warnings.
+
 ## Installation
 
-You'll first need to install [ESLint](http://eslint.org):
-
-```
-$ npm i eslint --save-dev
+```sh
+npm install --save-dev eslint-plugin-only-warn
 ```
 
-Next, install `eslint-plugin-only-warn`:
+## Usage
 
-```
-$ npm install eslint-plugin-only-warn --save-dev
-```
-
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-only-warn` globally.
-
-## Usage (Flat Config)
+Using [flat config files](https://eslint.org/docs/latest/use/configure/configuration-files):
 
 ```js
 // eslint.config.js
 import "eslint-plugin-only-warn";
+
+export default [
+  ...
 ```
 
-Getting `SyntaxError: Cannot use import statement outside a module`? Change your _package.json_ to `"type": "module",` or use require:
+Or, when the package.json that doesn't have `"type": "module"`:
 
 ```js
-// eslint.config.js
-require("eslint-plugin-only-warn");`
+require("eslint-plugin-only-warn");
 ```
 
-## Usage (Old style ESLint config)
-
-Not using the new flat config from ESLint 9+?
+<details>
+  <summary>ESLint 8.x and earlier</summary>
 
 Add `only-warn` to the plugins section of your `.eslintrc` configuration file:
 
@@ -44,17 +39,22 @@ Add `only-warn` to the plugins section of your `.eslintrc` configuration file:
 }
 ```
 
-## Recommendations
+</details>
 
-Add `--max-warnings=0` to the lint script in your package.json.
+### --max-warnings=0
+
+Add [--max-warnings=0](https://eslint.org/docs/latest/use/command-line-interface#--max-warnings) to the eslint command in package.json
 
 ```json
   "lint": "eslint --max-warnings=0 ...",
 ```
 
-This will make eslint cli report an errorcode which can be detected in a git hook or CI pipeline.
+Adding the option allows git hooks or CI pipelines to detect failed linting rules.  
+Because the cli now has a nonzero exitcode when it encountered linting warnings.
 
-Tip: Use [husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/okonet/lint-staged) to prevent committing eslint warnings.
+### Git integration
+
+Use [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/okonet/lint-staged) to prevent committing code that contain eslint warnings.
 
 # Why only warnings?
 
