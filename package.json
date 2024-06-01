@@ -14,21 +14,19 @@
     "type": "git",
     "url": "https://github.com/bfanger/eslint-plugin-only-warn.git"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "type": "commonjs",
   "main": "src/only-warn.js",
+  "prettier": {},
   "scripts": {
-    "lint": "prettier --check src tests && eslint src tests",
-    "format": "eslint --fix src tests && prettier --write src tests",
+    "lint": "prettier --check . && eslint .",
+    "format": "eslint --fix . && prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "devDependencies": {
-    "eslint": "^9.0.0",
+    "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.2.4",
-    "vitest": "^1.2.1"
+    "prettier": "^3.2.5",
+    "vitest": "^1.6.0"
   }
 }

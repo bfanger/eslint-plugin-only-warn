@@ -20,7 +20,7 @@ describe("eslint-plugin-only-warn", () => {
     expect(messages[0].severity).toBe(2);
   });
 
-  it("can be temporarly disabled", () => {
+  it("can be temporally disabled", () => {
     disable();
     const messages1 = linter.verify(sourceCode, config);
     expect(messages1[0].severity).toBe(2);
