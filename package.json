@@ -16,6 +16,7 @@
   },
   "type": "commonjs",
   "main": "src/only-warn.js",
+  "types": "src/only-warn.d.ts",
   "prettier": {},
   "scripts": {
     "lint": "prettier --check . && eslint .",
