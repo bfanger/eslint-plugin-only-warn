@@ -60,4 +60,4 @@ Use [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.
 
 - Don't waste time thinking or discussing about when a rule should be an error or a warning, focus on enabling of disabling a rule
 - Warnings look different in editors, this allows you to quickly see that some tweaking is required, but your code still runs (ESLint rules generally don't block the code from executing and fatal errors are still reported as error)
-- Prevents noise, disallowing warnings to be committed in a codebase prevents clutter in the output of ESLint (use [special eslint comments](https://eslint.org/docs/latest/use/configure/rules#disabling-rules) for the instances when you need an exception to the rules)
+- Prevents noise, disallowing warnings to be committed in a codebase prevents clutter in the output of ESLint (use [special eslint comments](https://eslint.org/docs/latest/use/configure/rules#disable-rules) for the instances when you need an exception to the rules)

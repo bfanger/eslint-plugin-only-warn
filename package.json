@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-only-warn",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "description": "Downgrade errors to warnings",
   "keywords": [
@@ -17,6 +17,10 @@
   "type": "commonjs",
   "main": "src/only-warn.js",
   "types": "types/only-warn.d.ts",
+  "files": [
+    "src",
+    "types"
+  ],
   "prettier": {},
   "scripts": {
     "lint": "prettier --check . && eslint . && tsc",
