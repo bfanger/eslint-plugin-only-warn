@@ -1,9 +1,11 @@
+// @ts-check
 const getEslintModules = require("./get-eslint-modules");
 
 const unpatchedVerify = Symbol("verify");
 
 /**
  * Patch the verify method and downgrade the errors to warnings.
+ * @param {Record<string | symbol, any>} LinterPrototype
  */
 function patch(LinterPrototype) {
   if (LinterPrototype[unpatchedVerify]) {
@@ -11,6 +13,7 @@ function patch(LinterPrototype) {
   }
   LinterPrototype[unpatchedVerify] = LinterPrototype.verify;
   LinterPrototype.verify = function () {
+    /** @type ReturnType<import("eslint").Linter["verify"]> */
     const messages = LinterPrototype[unpatchedVerify].apply(this, arguments);
     messages.forEach((message) => {
       if (!message.fatal && message.severity === 2) {
@@ -23,6 +26,7 @@ function patch(LinterPrototype) {
 
 /**
  * Remove the patch
+ * @param {Record<string | symbol, any>} LinterPrototype
  */
 function unpatch(LinterPrototype) {
   if (LinterPrototype[unpatchedVerify]) {

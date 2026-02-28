@@ -1,8 +1,10 @@
+// @ts-check
 const path = require("path");
 
 const SEARCH_STR = `${path.sep}node_modules${path.sep}eslint${path.sep}`;
 
 module.exports = function getEslintModules() {
+  /** @type {Record<string, any>} */
   const map = {};
   Object.keys(require.cache).forEach((modulePath) => {
     const pos = modulePath.indexOf(SEARCH_STR);

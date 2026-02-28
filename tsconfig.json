@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "target": "esnext",
+    "declaration": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./types"
+  },
+  "include": ["./src"]
+}

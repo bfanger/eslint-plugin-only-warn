@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-only-warn",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "description": "Downgrade errors to warnings",
   "keywords": [
@@ -16,17 +16,22 @@
   },
   "type": "commonjs",
   "main": "src/only-warn.js",
+  "types": "types/only-warn.d.ts",
   "prettier": {},
   "scripts": {
-    "lint": "prettier --check . && eslint .",
+    "lint": "prettier --check . && eslint . && tsc",
     "format": "eslint --fix . && prettier --write .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepublish": "rm -rf types && tsc"
   },
   "devDependencies": {
-    "eslint": "^9.4.0",
-    "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.2.5",
-    "vitest": "^1.6.0"
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.3.2",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }
